@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Felicidades, Eres un Ganador!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f5f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+        .content {
+            background-color: #ffffff;
+            padding: 40px 30px;
+        }
+        .winner-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2ecc71;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .ticket-number {
+            font-size: 18px;
+            color: #2ecc71;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .important-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #1c6b1c;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #6c757d;
+        }
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>¡Felicidades, Eres un Ganador!</h1>
+        </div>
+        <div class="content">
+            <p>Estimado/a {{params.NameAddressee}},</p>
+            
+            <p>¡Nos complace informarte que has resultado ganador en nuestro sorteo! A continuación, encontrarás los detalles de tu premio y las boletas ganadoras:</p>
+            
+            <div class="winner-info">
+                <h3>Detalles del Premio:</h3>
+                <p><strong>Evento:</strong> {{params.NameEvent}}</p>
+                <p><strong>Fecha del Sorteo:</strong> {{params.EventDate}}</p>
+                <p><strong>Premio:</strong> {{params.PrizeDescription}}</p>
+                
+                <div class="ticket-number">
+                    Números de Boleta(s) Ganadora(s):
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        {% for item in params.TicketNumbers %}
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" 
+                                    xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                                        fill="#2ecc71"/>
+                                </svg>
+                                {{ item }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <p><strong>Instrucciones para Reclamar tu Premio:</strong></p>
+                <ul>
+                    <li>Confirma tu identidad presentando un documento válido.</li>
+                    <li>Contacta a nuestro equipo de soporte para coordinar la entrega del premio.</li>
+                    <li>El premio debe ser reclamado dentro de los próximos 30 días.</li>
+                    <li>El premio no es transferible ni canjeable por dinero.</li>
+                </ul>
+            </div>
+
+            <p>Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos a través de nuestros canales de atención al cliente.</p>
+            
+            <p>¡Felicidades nuevamente y gracias por participar!</p>
+            
+            <p>Saludos cordiales,<br>
+                
+            <strong>{{params.NameCompany}}</strong></p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2020 Coder Team SAS. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>
