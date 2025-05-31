@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "export": "next export",
+    "build:static": "next build && next export",
+    "dev": "next dev",
     "start": "next start",
     "lint": "next lint"
   },
