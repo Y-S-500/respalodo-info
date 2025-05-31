@@ -18,6 +18,7 @@ import ScrollProgress from "@/components/scroll-progress"
 import AnimatedCard from "@/components/animated-card"
 import { toast } from "sonner"
 import React, { useState } from "react"
+import { BREVO_API_KEY } from "../config/secret";
 
 interface FormData {
   nombre: string
@@ -141,7 +142,7 @@ export default function Portfolio() {
         headers: {
           "accept": "application/json",
           "content-type": "application/json",
-          "api-key": "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"
+          "api-key": BREVO_API_KEY
         },
         body: JSON.stringify(brevoData)
       })
